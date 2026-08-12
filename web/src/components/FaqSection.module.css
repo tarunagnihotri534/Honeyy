@@ -1,0 +1,168 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   FaqSection.module.css — Frequently Asked Questions Section
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.section {
+  position: relative;
+  width: 100%;
+  padding: 70px 5% 90px;
+  background: #f7f4ed;
+  color: #1c1917;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ── Header Row (Title Left | Search Right) ────────────────────────────────── */
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: 'Jaro', sans-serif;
+  font-variation-settings: 'opsz' 6;
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 400;
+  color: #1c1917;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.15;
+}
+
+/* ── Search Input Box ─────────────────────────────────────────────────────── */
+.searchWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+}
+
+.searchInput {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #9ca3af;
+  background: transparent;
+  padding: 8px 32px 8px 0;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 15px;
+  color: #1c1917;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.searchInput::placeholder {
+  color: #6b7280;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.searchInput:focus {
+  border-bottom-color: #1c1917;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  pointer-events: none;
+}
+
+/* ── Accordion List ───────────────────────────────────────────────────────── */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faqItem {
+  width: 100%;
+}
+
+.faqHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 14px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.questionText {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: clamp(17px, 1.5vw, 20px);
+  font-weight: 700;
+  color: #1c1917;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.chevron {
+  color: #1c1917;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.answerWrapper {
+  overflow: hidden;
+}
+
+.answerText {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #4b5563;
+  padding: 8px 0 20px 0;
+  margin: 0;
+  max-width: 960px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: #374151;
+  margin-top: 8px;
+}
+
+.noResults {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+  color: #6b7280;
+  padding: 24px 0;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .section {
+    padding: 50px 5% 70px;
+  }
+
+  .headerRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .searchWrapper {
+    max-width: 100%;
+  }
+}

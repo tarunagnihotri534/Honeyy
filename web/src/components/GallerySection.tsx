@@ -151,7 +151,7 @@ export default function GallerySection() {
 
         {/* 3D Coverflow View */}
         {viewMode === 'coverflow' ? (
-          <div className="my-8 rounded-3xl bg-stone-900/95 p-6 md:p-10 shadow-2xl backdrop-blur border border-amber-900/30">
+          <div className="my-8 rounded-3xl bg-transparent p-6 md:p-10">
             <CoverflowCarousel
               slides={GALLERY_SLIDES}
               showNavigation={true}

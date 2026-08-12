@@ -6,7 +6,7 @@
 .section {
   position: relative;
   width: 100%;
-  padding: 85px 5% 95px;
+  padding: 30px 5% 40px;
   background: linear-gradient(180deg, #fdf0ee 0%, #fff8ea 50%, #fdf0ee 100%);
   color: #1c1917;
   overflow: hidden;

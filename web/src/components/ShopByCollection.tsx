@@ -3,43 +3,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './ShopByCollection.module.css';
+import { CoverflowCarousel, CoverflowSlide } from '@/components/ui/coverflow-carousel';
 
-interface CollectionItem {
-  id: string;
-  label: string;
-  image: string;
-  alt: string;
-  link: string;
-}
-
-const COLLECTIONS: CollectionItem[] = [
-  {
-    id: 'multifloral',
-    label: 'Multifloral Honey →',
-    image: '/B1.png',
-    alt: 'Meadlight Multifloral Fermented Honey Drink',
-    link: '/collections/multifloral-honey',
-  },
-  {
-    id: 'single-origin',
-    label: 'Single Origin Honey →',
-    image: '/B2.png',
-    alt: 'Meadlight Single Origin Honey Drink',
-    link: '/collections/single-origin-honey',
-  },
-  {
-    id: 'beekeeping',
-    label: 'Beekeeping Equipment →',
-    image: '/B3.png',
-    alt: 'Meadlight Beekeeping Equipment & Reserve',
-    link: '/collections/beekeeping-equipment',
-  },
+const CAROUSEL_ITEMS: CoverflowSlide[] = [
+  { src: '/B1.png',  alt: 'Meadlight Multifloral Fermented Honey Drink',   title: 'Multifloral Honey',   subtitle: 'Fermented Honey Drink' },
+  { src: '/B2.png',  alt: 'Meadlight Single Origin Honey Drink',            title: 'Single Origin Honey', subtitle: 'Pure Alpine Collection' },
+  { src: '/B3.png',  alt: 'Meadlight Beekeeping Equipment & Reserve',       title: 'Beekeeping Equipment',subtitle: 'Artisan Reserve Kit' },
+  { src: '/m4.png',  alt: 'Meadlight Lemon Ginger Fermented Honey Jar',     title: 'Lemon Ginger Honey',  subtitle: 'Fermented Honey Jar' },
+  { src: '/r5.png',  alt: 'Meadlight Raw Honey Collection',                 title: 'Raw Honey',           subtitle: 'Cold-Extracted Natural' },
+  { src: '/r6.png',  alt: 'Meadlight Reserve Honey Selection',              title: 'Reserve Selection',   subtitle: 'Premium Aged Honey' },
+  { src: '/r7.png',  alt: 'Meadlight Premium Honey Blend',                  title: 'Premium Blend',       subtitle: 'Signature Collection' },
 ];
 
 export default function ShopByCollection() {
   return (
     <section className={styles.section} aria-label="Shop By Collection">
-      {/* Seamless Organic Top Wave Separator (Matches preceding section color #fdf0ee) */}
+      {/* Seamless Organic Top Wave Separator */}
       <div className={styles.sectionWaveTop} aria-hidden="true">
         <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className={styles.sectionWaveSvg}>
           <path
@@ -50,36 +29,60 @@ export default function ShopByCollection() {
       </div>
 
       <div className={styles.container}>
-        {/* Section Header Row: Title Left + View All Link Right */}
-        <div className={styles.headerRow}>
+        {/* Section Header */}
+        <motion.div
+          className={styles.headerRow}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        >
           <h2 className={styles.sectionTitle}>SHOP BY COLLECTION</h2>
-          <a href="/collections" className={styles.viewAllLink}>
-            VIEW ALL →
-          </a>
-        </div>
+          <a href="/collections" className={styles.viewAllLink}>VIEW ALL →</a>
+        </motion.div>
 
-        {/* 3-Column Static Grid (Matching reference screenshot 1:1) */}
-        <div className={styles.cardsGrid}>
-          {COLLECTIONS.map((col, idx) => (
-            <motion.a
-              key={col.id}
-              href={col.link}
-              className={styles.cardLink}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.55, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {/* Full-Bleed Background Image */}
-              <img src={col.image} alt={col.alt} className={styles.bgImage} />
+        {/* Coverflow Carousel */}
+        <motion.div
+          className={styles.carouselWrapper}
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <CoverflowCarousel
+            slides={CAROUSEL_ITEMS}
+            rotate={44}
+            depth={0.55}
+            perspective={3}
+            falloff={0.56}
+            fade={0.12}
+            cardWidth="clamp(220px, 30vw, 340px)"
+            gap={0.06}
+            loop
+            showCaption
+            showPagination
+            showNavigation
+          />
+        </motion.div>
 
-              {/* Top-Right Label Badge */}
-              <div className={styles.topRightBadge}>
-                <span>{col.label}</span>
-              </div>
-            </motion.a>
-          ))}
-        </div>
+        {/* View Store CTA */}
+        <motion.div
+          className={styles.ctaRow}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <motion.a
+            href="/collections"
+            className={styles.viewStoreBtn}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+          >
+            VIEW STORE
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

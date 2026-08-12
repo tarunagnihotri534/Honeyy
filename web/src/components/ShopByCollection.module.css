@@ -1,19 +1,19 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    ShopByCollection.module.css
-   Meadlight Landing Page — Shop By Collection Section (Matching reference 1:1)
+   Meadlight Landing Page — Shop By Collection (DepthCarousel layout)
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .section {
   position: relative;
   width: 100%;
-  padding: 80px 5% 100px;
+  padding: 40px 5% 60px;
   background: #f7f4ed;
   color: #1c1917;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-/* Organic Top Wave Separator (Matches Section 05 color #fdf0ee) */
+/* Organic Top Wave Separator */
 .sectionWaveTop {
   position: absolute;
   top: -1px;
@@ -38,12 +38,15 @@
   z-index: 3;
 }
 
-/* ── Header Row: Left Title + Right View All Link ───────────────────────── */
+/* ── Header Row ─────────────────────────────────────────────────────────────── */
 .headerRow {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 32px;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
 .sectionTitle {
@@ -76,72 +79,70 @@
   transform: translateX(4px);
 }
 
-/* ── 3-Column Static Grid (No float bobbing) ──────────────────────────────── */
-.cardsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-/* Card Link Container */
-.cardLink {
+/* ── Carousel Wrapper ────────────────────────────────────────────────────────── */
+.carouselWrapper {
   position: relative;
-  display: block;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 4px;
-  overflow: hidden;
+  height: auto;
+}
+
+/* Override coverflow card bg to match honey theme */
+.carouselWrapper :global(.bg-muted) {
+  background-color: #fdf8f0;
+}
+
+/* Navigation arrow styling override */
+.carouselWrapper :global(button[aria-label="Previous slide"]),
+.carouselWrapper :global(button[aria-label="Next slide"]) {
+  background: rgba(245, 180, 0, 0.85) !important;
+  color: #1a1a1a !important;
+  backdrop-filter: blur(6px);
+}
+
+.carouselWrapper :global(button[aria-label="Previous slide"]):hover,
+.carouselWrapper :global(button[aria-label="Next slide"]):hover {
+  background: #f5b400 !important;
+}
+
+/* ── View Store CTA ─────────────────────────────────────────────────────────── */
+.ctaRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.viewStoreBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  height: 52px;
+  background: #f5b400;
+  border-radius: 999px;
+  font-family: 'Jaro', sans-serif;
+  font-variation-settings: 'opsz' 6;
+  font-size: 18px;
+  font-weight: 400;
+  color: #1a1a1a;
+  letter-spacing: 0.08em;
   text-decoration: none;
-  background: #e7e5e4;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  white-space: nowrap;
+  box-shadow: 0 6px 24px rgba(245, 180, 0, 0.4);
+  transition: box-shadow 0.2s ease;
 }
 
-/* Full-Bleed Background Image */
-.bgImage {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+.viewStoreBtn:hover {
+  box-shadow: 0 8px 32px rgba(245, 180, 0, 0.55);
 }
 
-.cardLink:hover .bgImage {
-  transform: scale(1.04);
-}
-
-/* Top-Right Category Label (Subtle Contrast) */
-.topRightBadge {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  z-index: 5;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: clamp(14px, 1.2vw, 16px);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: #1c1917;
-  pointer-events: none;
-  transition: transform 0.25s ease;
-}
-
-.cardLink:hover .topRightBadge {
-  transform: translateX(3px);
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   RESPONSIVE (<900px & <540px)
-   ═══════════════════════════════════════════════════════════════════════════ */
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .section {
-    padding: 60px 5% 75px;
+    padding: 30px 5% 50px;
   }
 
-  .cardsGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+  .carouselWrapper {
+    height: 440px;
   }
 }
 
@@ -151,12 +152,7 @@
     align-items: center;
   }
 
-  .cardsGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .cardLink {
-    aspect-ratio: 4 / 3;
+  .carouselWrapper {
+    height: 380px;
   }
 }

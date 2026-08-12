@@ -10,17 +10,21 @@
   z-index: 1000;
   width: 100%;
   padding: 20px 48px;
-  background-color: rgba(253, 240, 238, 0.82);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Formal clean sticky navbar when scrolled past 1st section */
 .headerScrolled {
-  padding: 14px 48px;
-  background-color: rgba(253, 240, 238, 0.94);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  padding: 12px 48px;
+  background: rgba(253, 240, 238, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(245, 180, 0, 0.25);
 }
 
 .container {
@@ -131,7 +135,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(0, 0, 0, 0.08);
   color: #1a1a1a;
   cursor: pointer;
@@ -163,7 +167,6 @@
   border: 2px solid #fdf0ee;
 }
 
-/* Yellow ABOUT / SHOP NOW pill button */
 .aboutPill {
   display: inline-flex;
   align-items: center;
@@ -190,57 +193,16 @@
   opacity: 0.9;
 }
 
-/* ── Mobile Hamburger Toggle ──────────────────────────────────────────────── */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 32px;
-  height: 28px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;
-}
-
-.hamburgerLine {
-  width: 100%;
-  height: 3px;
-  background-color: #1a1a1a;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* ── Mobile Menu Overlay ─────────────────────────────────────────────────── */
-.mobileMenu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #fdf0ee;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  padding: 40px 24px;
-}
-
-.mobileNavLink {
-  font-family: 'Jaro', sans-serif;
-  font-variation-settings: 'opsz' 6;
-  font-size: 32px;
-  color: #1a1a1a;
-  text-decoration: none;
-  letter-spacing: 0.06em;
-  transition: color 0.2s ease;
-}
-
-.mobileNavLink:hover {
-  color: #d99b00;
+/* ── Animated Falling Honey Drop Particles ───────────────────────────────── */
+.honeyDrop {
+  position: absolute;
+  width: 12px;
+  height: 16px;
+  background: radial-gradient(circle at 35% 35%, #ffe680 0%, #f5b400 65%, #d97706 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow: 0 4px 12px rgba(245, 180, 0, 0.5);
+  pointer-events: none;
+  z-index: 999;
 }
 
 /* ── Responsive Breakpoints ──────────────────────────────────────────────── */
@@ -262,9 +224,6 @@
   }
   .navMenu {
     display: none;
-  }
-  .hamburger {
-    display: flex;
   }
   .aboutPill {
     padding: 0 20px;

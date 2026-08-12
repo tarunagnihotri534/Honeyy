@@ -8,8 +8,12 @@ import SplashLoader from '@/components/SplashLoader';
 import JarBees from '@/components/JarBees';
 import HoneyStorySection from '@/components/HoneyStorySection';
 import ShopByCollection from '@/components/ShopByCollection';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import FaqSection from '@/components/FaqSection';
+import MarqueeBanner from '@/components/MarqueeBanner';
 import VideoBannerSection from '@/components/VideoBannerSection';
 import GallerySection from '@/components/GallerySection';
+
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -115,10 +119,19 @@ export default function HomePage() {
         <HoneyStorySection />
       </div>
 
+      {/* ── MARQUEE TICKER ────────────────────────────────────────────── */}
+      <MarqueeBanner />
+
       {/* ── SHOP BY COLLECTION SECTION ───────────────────────────────────── */}
       <div id="collections">
         <ShopByCollection />
       </div>
+
+      {/* ── TESTIMONIALS / REVIEWS SECTION ──────────────────────────────── */}
+      <TestimonialsSection />
+
+      {/* ── FREQUENTLY ASKED QUESTIONS (FAQ) SECTION ───────────────────── */}
+      <FaqSection />
 
       {/* ── VIDEO BANNER SECTION ────────────────────────────────────────── */}
       <VideoBannerSection />
