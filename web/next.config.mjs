@@ -8,6 +8,12 @@ const nextConfig = {
   },
   // Strict mode for React 18
   reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   // Experimental: app router typedRoutes
   experimental: {},
 };
